@@ -8,5 +8,4 @@ on:
 jobs:
   run-global:
     uses: sanjaydevelopment/org-ci-workflows/.github/workflows/python-checks.yml@main
-    with:
-      project_folder: "AILogAnalyzer"   # 👈 Change per project
+    secrets: inherit
