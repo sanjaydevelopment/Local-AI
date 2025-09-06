@@ -6,9 +6,7 @@ on:
   pull_request:
 
 jobs:
-  call-python-checks:
+  run-global:
     uses: sanjaydevelopment/org-ci-workflows/.github/workflows/python-checks.yml@main
     with:
-      python-version: "3.11"
-
-
+      project_folder: "AILogAnalyzer"   # 👈 Change per project
