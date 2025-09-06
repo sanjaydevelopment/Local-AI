@@ -7,4 +7,5 @@ on:
 
 jobs:
   run-global:
-    uses: sanjaydevelopment/.github/.github/workflows/python-checks.yml@main
+    uses: sanjaydevelopment/org-ci-workflows/.github/workflows/python-checks.yml@main
+
