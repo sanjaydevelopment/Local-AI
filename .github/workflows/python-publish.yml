@@ -6,6 +6,9 @@ on:
   pull_request:
 
 jobs:
-  run-global:
+  call-python-checks:
     uses: sanjaydevelopment/org-ci-workflows/.github/workflows/python-checks.yml@main
+    with:
+      python-version: "3.11"
+
 
