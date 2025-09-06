@@ -20,7 +20,6 @@ def summarize_with_ollama(log_text, model="llama3"):
     except Exception as e:
         return f"⚠️ Error contacting Ollama: {e}"
 
-# ---- Universal Log Parser ----
 def parse_log(file):
     try:
         decoded = file.read().decode("utf-8")
