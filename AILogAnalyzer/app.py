@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from io import StringIO
 import requests
 
-# ---- AI Summary using Ollama ----
+# ---- AI Summary using Ollama ---------
 def summarize_with_ollama(log_text, model="llama3"):
     try:
         response = requests.post(
