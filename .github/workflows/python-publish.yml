@@ -12,4 +12,6 @@ permissions:
 jobs:
   run-global:
     uses: sanjaydevelopment/org-ci-workflows/.github/workflows/python-checks.yml@main
-    secrets: inherit
+    secrets:
+      inherit: true
+
