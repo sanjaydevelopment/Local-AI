@@ -4,14 +4,32 @@ on:
   push:
     branches: ["main", "develop", "dev", "feature/*"]
   pull_request:
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: read
-  issues: write   # ✅ pass issue permissions down to reusable workflow
+  issues: write
+  pull-requests: write
 
 jobs:
-  run-global:
+  python-quality-checks:
+    # ✅ CORRECT WAY TO CALL REUSABLE WORKFLOW
     uses: sanjaydevelopment/org-ci-workflows/.github/workflows/python-checks.yml@main
-    secrets:
-      inherit: true
+    # Pass permissions to the reusable workflow
+    permissions:
+      contents: read
+      issues: write
 
+  # Optional: Add a job to notify on completion
+  notify-results:
+    needs: python-quality-checks
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Notify on completion
+        run: |
+          if [ "${{ needs.python-quality-checks.result }}" = "success" ]; then
+            echo "🎉 All Python checks passed successfully!"
+          else
+            echo "⚠️ Some Python checks failed. Please review the workflow results."
+          fi
