@@ -13,14 +13,11 @@ permissions:
 
 jobs:
   python-quality-checks:
-    # ✅ CORRECT WAY TO CALL REUSABLE WORKFLOW
     uses: sanjaydevelopment/org-ci-workflows/.github/workflows/python-checks.yml@main
-    # Pass permissions to the reusable workflow
     permissions:
       contents: read
       issues: write
 
-  # Optional: Add a job to notify on completion
   notify-results:
     needs: python-quality-checks
     runs-on: ubuntu-latest
