@@ -8,16 +8,18 @@ on:
 
 permissions:
   contents: read
-  issues: write  # ✅ Ensures write access for issues
+  issues: write  # ✅ Repo-level write
   pull-requests: write
 
 jobs:
   python-quality-checks:
+    # Explicitly pass write permissions to reusable workflow
     uses: sanjaydevelopment/org-ci-workflows/.github/workflows/python-checks.yml@main
     secrets: inherit
-    permissions:  # ✅ Pass permissions to reusable workflow
+    permissions:  # ✅ JOB-LEVEL: This overrides defaults for the reusable workflow
       contents: read
-      issues: write
+      issues: write  # Key: Enables gh issue create
+      pull-requests: write
 
   notify-results:
     needs: python-quality-checks
