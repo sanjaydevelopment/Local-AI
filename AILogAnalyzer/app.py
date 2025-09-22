@@ -4,8 +4,7 @@ import re
 import matplotlib.pyplot as plt
 from io import StringIO
 import requests
-
-# ---- AI Sum using Ollama ------
+# ---- AI Sum using Ollama ----
 def summarize_with_ollama(log_text, model="llama3"):
     try:
         response = requests.post(
